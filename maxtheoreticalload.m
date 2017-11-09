@@ -1,7 +1,7 @@
 function [failMember,failLoad] = maxtheoreticalload(C,x,y,T)
 %F(l) = C/l^2
 %C = 12277.78 N cm^2
-%Here l is the length of the member and
+%Here l is the length of the member and C is the constant found by experimentation
 
 %Gets the number of joints and members
 [numJoints,numMems]=size(C);
