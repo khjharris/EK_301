@@ -15,6 +15,7 @@ CONS = 12277.78;
 bucklingLoad = zeros(numMems);
 SR = zeros(numMems);
 Failnum = 0;
+Failval = 0;
 
 %Makes the square matrix of distances
 for i = 1:numJoints
@@ -50,8 +51,9 @@ end
 
 %Find the member that fails
 for m =1:numMems
-    if SR(m) > Failnum
+    if SR(m) > Failval
         Failnum = m;
+        Failval = SR(m);
     end 
 end
 
