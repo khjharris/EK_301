@@ -43,7 +43,7 @@ for g=1:numMems
     bucklingLoad(g) = CONS/(lengths(g)*lengths(g));
 end
 
-%Calcualte the SR ration for all the members
+%Calculate the SR ration for all the members
 for u=1:numMems
     SR(u)= T(u)/bucklingLoad(u);
 end
@@ -55,7 +55,7 @@ for m =1:numMems
     end 
 end
 
-%Calcualte the Force of failure
+%Calculate the Force of failure
 failLoad = 1/SR(Failnum);
 failMember = Failnum;
 
