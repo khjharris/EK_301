@@ -50,16 +50,16 @@ for j = 1:colC
     for i = (rowC+1):(2*rowC)
         % If the member and joint are connected, then c(i-j, j) will have a
         % 1
-        if (c(i-j,j))
+        if (c(i-rowC,j))
             ind(1,counter) = i;
             counter = counter + 1;
         end
     end
     
     % Sets values for y forces in bottom half of A
-    a(ind(1), j) = y(ind(1)-j)*(-1) + y(ind(2)-j);
-    a(ind(2), j) = y(ind(2)-j)*(-1) + y(ind(1)-j);
-    r = findr(x(ind(1)-j), x(ind(2)-j), y(ind(1)-j),y(ind(2)-j));
+    a(ind(1), j) = y(ind(1)-rowC)*(-1) + y(ind(2)-rowC);
+    a(ind(2), j) = y(ind(2)-rowC)*(-1) + y(ind(1)-rowC);
+    r = findr(x(ind(1)-rowC), x(ind(2)-rowC), y(ind(1)-rowC),y(ind(2)-rowC));
     
     % Only divides bottom half by the distance
     a(9:16,j) = a(9:16,j)/r;
