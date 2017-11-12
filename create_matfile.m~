@@ -15,7 +15,7 @@ while right
             C(i, tempm(k)) = 1;
         end
     end
-    right = input('Are all these values correct? ');
+    right = input('Are all these values correct? ','s');
     if right == 'yes'
         right = false;
     else
@@ -26,7 +26,7 @@ end
 Sx=zeros(j,3);
 Sy=zeros(j,3);
 
-supports=input('Enter all joint numbers that have support forces in a vector: ');
+supports=input('Enter all joint numbers that have support forces in a vector: ','s');
 
 right = true;
 while right
@@ -82,14 +82,22 @@ L=zeros(2*j,1);
 
 right = true;
 while right
-L_index=input('Which joint is the load applied at?: ');
-L_dir = input('Is the force in the vertical direction or horizontal? ','s');
-L_val=input('What is the Force value (N) of the load?: ');
+    L_index=input('Which joint is the load applied at?: ');
+    L_dir = input('Is the force in the vertical direction or horizontal? ','s');
+    L_val=input('What is the Force value (N) of the load?: ');
 
-if (L_dir == 'v')
-    L_index = L_index + j;
+    if (L_dir == 'v')
+        L_index = L_index + j;
+    end
+
+    L(L_index)=L_val;
+    
+    right = input('Are all these values correct? ');
+    if right == 'yes'
+        right = false;
+    else
+        right = true;
+    end
 end
-
-L(L_index)=L_val;
 
 save('PrattTruss','C','Sx','Sy','X','Y','L')

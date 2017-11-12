@@ -15,8 +15,8 @@ while right
             C(i, tempm(k)) = 1;
         end
     end
-    right = input('Are all these values correct? ');
-    if right == 'yes'
+    right = input('Are all these values correct? ','s');
+    if right == 'y'
         right = false;
     else
         right = true;
@@ -51,8 +51,8 @@ while right
             end
         end
     end
-    right = input('Are all these values correct? ');
-    if right == 'yes'
+    right = input('Are all these values correct? ','s');
+    if right == 'y'
         right = false;
     else
         right = true;
@@ -70,8 +70,8 @@ while right
         X(i) = coords(1);
         Y(i) = coords(2);
     end
-    right = input('Are all these values correct? ');
-    if right == 'yes'
+    right = input('Are all these values correct? ','s');
+    if right == 'y'
         right = false;
     else
         right = true;
@@ -92,8 +92,8 @@ while right
 
     L(L_index)=L_val;
     
-    right = input('Are all these values correct? ');
-    if right == 'yes'
+    right = input('Are all these values correct? ','s');
+    if right == 'y'
         right = false;
     else
         right = true;
