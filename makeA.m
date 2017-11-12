@@ -48,18 +48,18 @@ for j = 1:colC
     counter = 1;
     % Loops over bottom half of A rows (for y values)
     for i = (rowC+1):(2*rowC)
-        % If the member and joint are connected, then c(i-8, j) will have a
+        % If the member and joint are connected, then c(i-j, j) will have a
         % 1
-        if (c(i-8,j))
+        if (c(i-j,j))
             ind(1,counter) = i;
             counter = counter + 1;
         end
     end
     
     % Sets values for y forces in bottom half of A
-    a(ind(1), j) = y(ind(1)-8)*(-1) + y(ind(2)-8);
-    a(ind(2), j) = y(ind(2)-8)*(-1) + y(ind(1)-8);
-    r = findr(x(ind(1)-8), x(ind(2)-8), y(ind(1)-8),y(ind(2)-8));
+    a(ind(1), j) = y(ind(1)-j)*(-1) + y(ind(2)-j);
+    a(ind(2), j) = y(ind(2)-j)*(-1) + y(ind(1)-j);
+    r = findr(x(ind(1)-j), x(ind(2)-j), y(ind(1)-j),y(ind(2)-j));
     
     % Only divides bottom half by the distance
     a(9:16,j) = a(9:16,j)/r;

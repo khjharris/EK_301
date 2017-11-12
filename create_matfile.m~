@@ -16,7 +16,7 @@ while right
         end
     end
     right = input('Are all these values correct? ','s');
-    if right == 'y'
+    if right == 'yes'
         right = false;
     else
         right = true;
@@ -26,7 +26,7 @@ end
 Sx=zeros(j,3);
 Sy=zeros(j,3);
 
-supports=input('Enter all joint numbers that have support forces in a vector: ');
+supports=input('Enter all joint numbers that have support forces in a vector: ','s');
 
 right = true;
 while right
@@ -51,8 +51,8 @@ while right
             end
         end
     end
-    right = input('Are all these values correct? ','s');
-    if right == 'y'
+    right = input('Are all these values correct? ');
+    if right == 'yes'
         right = false;
     else
         right = true;
@@ -70,8 +70,8 @@ while right
         X(i) = coords(1);
         Y(i) = coords(2);
     end
-    right = input('Are all these values correct? ','s');
-    if right == 'y'
+    right = input('Are all these values correct? ');
+    if right == 'yes'
         right = false;
     else
         right = true;
@@ -92,8 +92,8 @@ while right
 
     L(L_index)=L_val;
     
-    right = input('Are all these values correct? ','s');
-    if right == 'y'
+    right = input('Are all these values correct? ');
+    if right == 'yes'
         right = false;
     else
         right = true;
