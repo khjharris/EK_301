@@ -89,7 +89,7 @@ failMember = Failnum;
 
 %Print the failmember and value
 fprintf('Failure Load: \n');
-disp(failLoad);
+disp(abs(failLoad));
 fprintf('\n');
 
 fprintf('Failure Member: \n');
