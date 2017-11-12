@@ -58,9 +58,5 @@ fprintf('Sy2: %s\n',T2{length(T2)})
 %Cost of truss
 [lengths,failMember,failLoad]=maxtheoreticalload(C,X,Y,T);
 
-[numjoints, nummemembs]=size(C);
-[cost,costratio]=calc_costratio(lengths, numjoints, failLoad);
 
-fprintf('Cost of truss: $%.2f\n',cost)
-fprintf('Theoretical max load/cost ratio in N/$: %.4f\n',costratio)
 %Theoretical max load/cost ration A1, Group 1: Laura Joy Erb, Luca Amorosa, Kenwood Harris, 11/11/2017')
