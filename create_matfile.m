@@ -60,4 +60,4 @@ end
 
 L(L_index)=L_val;
 
-save('TrussDesign1_LauraJoyLucaKenwood_A1','C','Sx','Sy','X','Y','L')
+save('PrattTruss','C','Sx','Sy','X','Y','L')

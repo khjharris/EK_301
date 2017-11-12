@@ -3,8 +3,6 @@
 % Loads appropriate variables
 load TrussDesign1_LauraJoyLucaKenwood_A1.mat
 
-digits(3);
-
 % Calls function to make A matrix
 A=makeA(C,Sx,Sy,X,Y);
 
