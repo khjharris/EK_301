@@ -82,22 +82,14 @@ L=zeros(2*j,1);
 
 right = true;
 while right
-    L_index=input('Which joint is the load applied at?: ');
-    L_dir = input('Is the force in the vertical direction or horizontal? ','s');
-    L_val=input('What is the Force value (N) of the load?: ');
+L_index=input('Which joint is the load applied at?: ');
+L_dir = input('Is the force in the vertical direction or horizontal? ','s');
+L_val=input('What is the Force value (N) of the load?: ');
 
-    if (L_dir == 'v')
-        L_index = L_index + j;
-    end
-
-    L(L_index)=L_val;
-    
-    right = input('Are all these values correct? ');
-    if right == 'yes'
-        right = false;
-    else
-        right = true;
-    end
+if (L_dir == 'v')
+    L_index = L_index + j;
 end
+
+L(L_index)=L_val;
 
 save('PrattTruss','C','Sx','Sy','X','Y','L')
