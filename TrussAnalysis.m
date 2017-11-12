@@ -11,21 +11,21 @@ A=makeA(C,Sx,Sy,X,Y);
 T=findforces(A,L);
 
 % Converts vector to cell array
-T=num2cell(T);
+T2=num2cell(T);
 
 % Rounds values to 3 significant figures
-for i = 1:(length(T))
-    T{i} = round(T{i}, 3, 'significant');
+for i = 1:(length(T2))
+    T2{i} = round(T2{i}, 3, 'significant');
 end
 
 % Assigns tension or compression to each member force
-for i=1:(length(T)-3)
-    if T{i}<0
-        T{i}=strcat(num2str(T{i}),' (C)');
-    elseif T{i}>0
-        T{i}=strcat(num2str(T{i}),' (T)');
+for i=1:(length(T2)-3)
+    if T2{i}<0
+        T2{i}=strcat(num2str(T2{i}),' (C)');
+    elseif T2{i}>0
+        T2{i}=strcat(num2str(T2{i}),' (T)');
     else
-        T{i} = '0.00';
+        T2{i} = '0.00';
     end
 end
     
@@ -35,25 +35,26 @@ disp('\% EK301, Section A1, Group 1: Laura Joy Erb, Luca Amorosa, Kenwood Harris
 fprintf('Load: %.1f N\n',sum(L))
 
 % Prints force on each member
-for i=1:(length(T)-3)
-    fprintf('m%d: %s\n',i,T{i})
+for i=1:(length(T2)-3)
+    fprintf('m%d: %s\n',i,T2{i})
 end
 
 disp('Reaction forces in Newtons:')
 
 % Converts support force values to strings
-for i = (length(T) - 2):length(T)
-    if (T{i})
-        T{i} = num2str(T{i});
+for i = (length(T2) - 2):length(T2)
+    if (T2{i})
+        T2{i} = num2str(T2{i});
     else
-        T{i} = '0.00';
+        T2{i} = '0.00';
     end
 end
 
 % Prints each support force
-fprintf('Sx1: %s\n',T{length(T)-2})
-fprintf('Sy1: %s\n',T{length(T)-1})
-fprintf('Sy2: %s\n',T{length(T)})
+fprintf('Sx1: %s\n',T2{length(T2)-2})
+fprintf('Sy1: %s\n',T2{length(T2)-1})
+fprintf('Sy2: %s\n',T2{length(T2)})
 
 %Cost of truss
+maxtheoreticalload(C,X,Y,T);
 %Theoretical max load/cost ration A1, Group 1: Laura Joy Erb, Luca Amorosa, Kenwood Harris, 11/11/2017')

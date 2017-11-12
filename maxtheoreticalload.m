@@ -9,11 +9,11 @@ function [failMember,failLoad] = maxtheoreticalload(C,x,y,T)
 %Initializes vectors and variables
 distance = zeros(numJoints,numJoints); %prepares a matrix for the distances between joints
 vec = [];
-lengths = zeros(numMems);
 count = 1;
 CONS = 12277.78;
-bucklingLoad = zeros(numMems);
-SR = zeros(numMems);
+lengths=[];
+bucklingLoad = zeros(1,numMems);
+SR = zeros(1,numMems);
 Failnum = 0;
 Failval = 0;
 
@@ -25,7 +25,7 @@ for i = 1:numJoints
 end
 
 %Prints out the square matrix of distances
-fprintf('Square matrix of distances: /n');
+fprintf('Square matrix of distances: \n');
 disp(distance);
 fprintf('\n');
 
@@ -40,13 +40,13 @@ for k=1:numMems
 end
 
 %Prints out the joints each member is connected to
-fprint('Joints connected to each member: \n');
+fprintf('Joints connected to each member: \n');
 disp(vec);
 fprintf('\n');
 
 %Loop through vector with joints to produce vector with lengths
 for b=1:2:(numMems*2)
-    lengths(b) = distance(vec(b),vec(b+1));
+    lengths = [lengths distance(vec(b),vec(b+1))];
 end
 
 %Prints the lengths of the members
@@ -71,12 +71,12 @@ end
 
 %Prints the SR ratios
 fprintf('SR ratios: \n');
-disp(bucklingLoad);
+disp(SR);
 fprintf('\n');
 
 %Find the member that fails
 for m =1:numMems
-    if SR(m) > Failval
+    if SR(m) < Failval
         Failnum = m;
         Failval = SR(m);
     end 
