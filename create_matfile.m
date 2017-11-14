@@ -15,11 +15,17 @@ while right
             C(i, tempm(k)) = 1;
         end
     end
-    right = input('Are all these values correct? ','s');
-    if right == 'y'
-        right = false;
-    else
+    Csum = sum(C);
+    twos = ones(1,m)*2;
+    if (~isequal(Csum,twos))
         right = true;
+    else
+        right = input('Are all these values correct? ','s');
+        if right == 'y'
+            right = false;
+        else
+            right = true;
+        end
     end
 end
 
