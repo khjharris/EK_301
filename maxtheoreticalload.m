@@ -44,6 +44,11 @@ for g=1:numMems
     bucklingLoad(g) = CONS/(lengths(g).*lengths(g));
 end
 
+%Calculates uncertainty for each member
+unc = zeros(1, numMems);
+for g=1:numMems
+    unc(g) = 643.7125/(lengths(g)*lengths(g)*lengths(g));
+end
 
 %Calculate the SR ratio for all the members
 for u=1:numMems
