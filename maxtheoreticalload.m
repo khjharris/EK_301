@@ -1,6 +1,6 @@
-function [lengths,failMember,failLoad] = maxtheoreticalload(C,x,y,T)
+function [lengths,failMember,failLoad] = maxtheoreticalload(C,x,y,T,L)
 %F(l) = C/l^2
-%C = 12277.78 N cm^2
+%C = 1277.78 N cm^2
 %Here l is the length of the member and C is the constant found by experimentation
 
 %Gets the number of joints and members
@@ -10,7 +10,7 @@ function [lengths,failMember,failLoad] = maxtheoreticalload(C,x,y,T)
 distance = zeros(numJoints,numJoints); %prepares a matrix for the distances between joints
 vec = [];
 count = 1;
-CONS = 12277.78;
+CONS = 1277.78;
 lengths=[];
 bucklingLoad = zeros(1,numMems);
 SR = zeros(1,numMems);
@@ -41,7 +41,7 @@ end
 
 %Calculate the Buckling Force for each member
 for g=1:numMems
-    bucklingLoad(g) = CONS/(lengths(g)*lengths(g));
+    bucklingLoad(g) = CONS/(lengths(g).*lengths(g));
 end
 
 
@@ -61,7 +61,7 @@ end
 
 
 %Calculate the Force of failure
-failLoad = 1/SR(Failnum);
+failLoad = sum(L)/abs(SR(Failnum));
 failMember = Failnum;
 
 end

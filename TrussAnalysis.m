@@ -1,7 +1,10 @@
 % Truss Analysis Script
 
 % Loads appropriate variables
-load TrussDesign1_LauraJoyLucaKenwood_A1.mat
+%load TrussDesign1_LauraJoyLucaKenwood_A1.mat
+
+filename=input('Enter the name of the .mat file with extension:','s');
+load(filename);
 
 % Calls function to make A matrix
 A=makeA(C,Sx,Sy,X,Y);
@@ -21,9 +24,9 @@ end
 % Assigns tension or compression to each member force
 for i=1:(length(T2)-3)
     if T2{i}<0
-        T2{i}=strcat(num2str(T2{i}),' (C)');
+        T2{i}=strcat(num2str(abs(T2{i})),' (C)');
     elseif T2{i}>0
-        T2{i}=strcat(num2str(T2{i}),' (T)');
+        T2{i}=strcat(num2str(abs(T2{i})),' (T)');
     else
         T2{i} = '0.00';
     end
@@ -56,7 +59,7 @@ fprintf('Sy1: %s\n',T2{length(T2)-1})
 fprintf('Sy2: %s\n',T2{length(T2)})
 
 %Cost of truss
-[lengths,failMember,failLoad]=maxtheoreticalload(C,X,Y,T);
+[lengths,failMember,failLoad]=maxtheoreticalload(C,X,Y,T,L);
 
 [numjoints, nummemembs]=size(C);
 [cost,costratio]=calc_costratio(lengths, numjoints, failLoad);
