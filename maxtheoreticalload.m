@@ -16,6 +16,7 @@ bucklingLoad = zeros(1,numMems);
 SR = zeros(1,numMems);
 Failnum = 0;
 Failval = 0;
+failMember=[];
 
 %Makes the square matrix of distances
 for i = 1:numJoints
@@ -44,11 +45,6 @@ for g=1:numMems
     bucklingLoad(g) = CONS/(lengths(g).*lengths(g));
 end
 
-%Calculates uncertainty for each member
-unc = zeros(1, numMems);
-for g=1:numMems
-    unc(g) = 643.7125/(lengths(g)*lengths(g)*lengths(g));
-end
 
 %Calculate the SR ratio for all the members
 for u=1:numMems
@@ -56,7 +52,7 @@ for u=1:numMems
 end
 
 
-%Find the member that fails
+%Find the member that fails first
 for m =1:numMems
     if SR(m) < Failval
         Failnum = m;
@@ -64,10 +60,15 @@ for m =1:numMems
     end 
 end
 
+%Checking if more than one member fails first
+for m=1:numMems
+    if SR(m)==Failval
+        failMember=[failMember m];
+    end
+end
 
 %Calculate the Force of failure
 failLoad = sum(L)/abs(SR(Failnum));
-failMember = Failnum;
 
 end
 function r = findr(x1,x2,y1,y2)
