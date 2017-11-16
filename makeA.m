@@ -62,7 +62,7 @@ for j = 1:colC
     r = findr(x(ind(1)-rowC), x(ind(2)-rowC), y(ind(1)-rowC),y(ind(2)-rowC));
     
     % Only divides bottom half by the distance
-    a(9:16,j) = a(9:16,j)/r;
+    a((rowC+1):(2*rowC),j) = a((rowC+1):(2*rowC),j)/r;
 end
 
 % Adds support matrices to the end of A
