@@ -3,7 +3,7 @@
 % Loads appropriate variables
 %load TrussDesign1_LauraJoyLucaKenwood_A1.mat
 
-filename=input('Enter the name of the .mat file with extension:','s');
+filename=input('Enter the name of the .mat file with extension: ','s');
 load(filename);
 
 % Calls function to make A matrix
