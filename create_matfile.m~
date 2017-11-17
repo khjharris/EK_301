@@ -89,13 +89,11 @@ right = true;
 while right
     for i=1:j
         question=sprintf('What are the coordinates of joint %d?: ',i);
-        % Receives a vector input with coordinates of each joint
+        % Receives a vector input with
         coords=input(question);
         X(i) = coords(1);
         Y(i) = coords(2);
     end
-    
-    % Checks with user for correct input
     right = input('Are all these values correct? ','s');
     if right == 'y'
         right = false;
@@ -109,14 +107,15 @@ L=zeros(2*j,1);
 right = true;
 while right
     L_index=input('Which joint is the load applied at?: ');
+    L_dir = input('Is the force in the vertical direction or horizontal? ','s');
     L_val=input('What is the Force value (N) of the load?: ');
-    
-    % Corrects L_index to vertical force instead of horizontal
-    L_index = L_index + j;
+
+    if (L_dir == 'v')
+        L_index = L_index + j;
+    end
 
     L(L_index)=L_val;
     
-    % Checks with user for correct input
     right = input('Are all these values correct? ','s');
     if right == 'y'
         right = false;
@@ -125,5 +124,4 @@ while right
     end
 end
 
-% Saves matfile to be tested later!
 save('PrattTruss','C','Sx','Sy','X','Y','L')

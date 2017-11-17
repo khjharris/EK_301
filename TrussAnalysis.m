@@ -1,7 +1,6 @@
 % Truss Analysis Script
 
 % Loads appropriate variables
-%load TrussDesign1_LauraJoyLucaKenwood_A1.mat
 
 filename=input('Enter the name of the .mat file with extension: ','s');
 load(filename);
@@ -66,4 +65,3 @@ fprintf('Sy2: %s\n',T2{length(T2)})
 
 fprintf('Cost of truss: $%.2f\n',cost)
 fprintf('Theoretical max load/cost ratio in N/$: %.4f\n',costratio)
-%Theoretical max load/cost ration A1, Group 1: Laura Joy Erb, Luca Amorosa, Kenwood Harris, 11/11/2017')
