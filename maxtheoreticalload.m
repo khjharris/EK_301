@@ -39,26 +39,33 @@ end
 for b=1:2:(numMems*2)
     lengths = [lengths distance(vec(b),vec(b+1))];
 end
-lengths=lengths-0.5;
 
-%Calculate the Buckling Force for each member
+% Calculate the Buckling Force for each member
 for g=1:numMems
     bucklingLoad(g) = CONS/(lengths(g).*lengths(g));
 end
 
-%Calculates uncertainty for each member
+disp(bucklingLoad)
+
+% Calculates correction factor for buckling loads
+for i = 1:numMems
+    bucklingLoad(i) = ((lengths(i)/(lengths(i)-0.5))^2)*bucklingLoad(i);
+end
+
+disp(bucklingLoad)
+
+% Calculates uncertainty for each member
 unc = zeros(1, numMems);
 for g=1:numMems
     unc(g) = 643.7125/(lengths(g)*lengths(g)*lengths(g));
 end
 
-%Calculate the SR ratio for all the members
+% Calculate the SR ratio for all the members
 for u=1:numMems
     SR(u)= T(u)/bucklingLoad(u);
 end
 
-
-%Find the member that fails first
+% Find the member that fails first
 for m =1:numMems
     if SR(m) < Failval
         Failnum = m;

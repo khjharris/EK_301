@@ -34,7 +34,7 @@ end
 disp('\% EK301, Section A1, Group 1: Laura Joy Erb, Luca Amorosa, Kenwood Harris, 11/11/2017')
 
 % Prints applied load to truss
-fprintf('Load: %.1f N\n',sum(L))
+fprintf('Load: %.2f N\n',sum(L))
 
 % Prints force on each member
 for i=1:(length(T2)-3)
