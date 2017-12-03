@@ -60,6 +60,8 @@ fprintf('Sy2: %s\n',T2{length(T2)})
 %Cost of truss
 [lengths,failMember,failLoad]=maxtheoreticalload(C,X,Y,T,L);
 
+fprintf('Fail Load: %d\n',failLoad);
+
 [numjoints, nummemembs]=size(C);
 [cost,costratio]=calc_costratio(lengths, numjoints, failLoad);
 
