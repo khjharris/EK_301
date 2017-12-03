@@ -39,6 +39,7 @@ end
 for b=1:2:(numMems*2)
     lengths = [lengths distance(vec(b),vec(b+1))];
 end
+lengths=lengths-0.5;
 
 %Calculate the Buckling Force for each member
 for g=1:numMems
